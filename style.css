@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 body {
-    margin: 0
+    margin: 0;
+    background-color: rgb(32, 27, 23);
+    color: rgb(255, 219, 196);
+    font-family: 'Rubik', sans-serif;
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 .calc-container {
@@ -16,9 +24,10 @@ body {
 }
 
 .calc-result {
-    background-color: rgb(239, 239, 239);
-    border-radius: 12px;
+    background-color: rgb(63, 48, 37);
+    border-radius: 20px;
     height: 100px;
+    margin: 10px 0 0 0;
 }
 
 .calc-buttons {
@@ -33,49 +42,60 @@ button {
     padding: 0;
     margin: 10px 0px;
     border: none;
-    border-radius: 12px;
+    border-radius: 20px;
+    background-color: rgb(44, 34, 28);
+    color: rgb(255, 219, 196);
+    font-size: 30px;
+    font-family: 'Rubik', sans-serif;
 }
 
 button:hover {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(39, 29, 23);
 }
 
 button:active {
-    background-color: rgb(212, 212, 212);
+    background-color: transparent;
 }
 
 .clean {
-    background-color: rgb(255, 230, 230);
+    color: rgb(226, 231, 178);
+    background-color: rgb(70, 74, 34);
 }
 
 .clean:hover {
-    background-color: rgb(255, 221, 221);
+    background-color: rgb(65, 69, 29);
 }
 
 .clean:active {
-    background-color: rgb(255, 203, 203);
+    background-color: rgb(60, 64, 24);
 }
 
 .sign, .percent, .operator {
-    background-color: rgb(230, 255, 230);
+    background-color: rgb(91, 66, 47);
 }
 
 .sign:hover, .percent:hover, .operator:hover {
-    background-color: rgb(221, 255, 221);
+    background-color: rgb(86, 61, 42);
 }
 
 .sign:active, .percent:active, .operator:active {
-    background-color: rgb(203, 255, 203);
+    background-color: rgb(81, 56, 37);
 }
 
 .equals {
-    background-color: rgb(230, 230, 255);
+    background-color: rgb(110, 57, 11);
 }
 
 .equals:hover {
-    background-color: rgb(221, 221, 255);
+    background-color: rgb(105, 52, 6);
 }
 
 .equals:active {
-    background-color: rgb(203, 203, 255);
+    background-color: rgb(100, 47, 1);
+}
+
+.footer {
+    margin: 0;
+    margin-left: auto;
+    font-size: 20px;
 }
