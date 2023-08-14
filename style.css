@@ -24,10 +24,20 @@ body {
 }
 
 .calc-result {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 50px;
     background-color: rgb(63, 48, 37);
     border-radius: 20px;
     height: 100px;
     margin: 10px 0 0 0;
+    padding: 0 25px;
+}
+
+.calc-result.error {
+    color: rgb(230, 113, 113);
+justify-content: start;
 }
 
 .calc-buttons {
