@@ -1,5 +1,11 @@
 const display = document.querySelector('.calc-result');
 const numButtons = document.querySelectorAll('.operand');
+const operatorButtons = document.querySelectorAll('.operator');
+const clearButton = document.querySelector('.clean');
+const signButton = document.querySelector('.sign');
+const percentButton = document.querySelector('.percent');
+const decimalButton = document.querySelector('.decimal');
+const equalsButton = document.querySelector('.equals');
 
 let displayInput = '';
 let displayNum = '';
@@ -10,6 +16,19 @@ let currentOperator = '';
 
 function init() {
     window.addEventListener('keydown', handleKeyInput);
+    for (let i = 0; i < numButtons.length; i++) {
+        numButtons[i].addEventListener('click', () => {
+            addDisplayNum(numButtons[i].textContent);
+        });
+    }
+    for (let i = 0; i < operatorButtons.length; i++) {
+        operatorButtons[i].addEventListener('click', appendFirstNum(operatorButtons[i].textContent));
+    }
+    clearButton.addEventListener('click', clear);
+    equalsButton.addEventListener('click', () => {
+        appendLastNum();
+        getResult();
+    });
 }
 
 function handleKeyInput(e) {
@@ -25,20 +44,11 @@ function handleKeyInput(e) {
         removeDisplayNum();
     }
     if (displayInput === '+' || displayInput === '-' || displayInput === '*' || displayInput === '/') {
-        appendFirstNum();
+        appendFirstNum(displayInput);
     }
     if (displayInput === '=') {
         appendLastNum();
-        if (currentFirstNum === '' || currentLastNum === '') {
-            showError('Error!');
-        } else if (currentLastNum == 0 && currentOperator == '/') {
-            showError("Can't divide by 0!");
-        } else {
-            displayNum = operate(currentFirstNum, currentLastNum, currentOperator);
-            currentLastNum = '';
-            currentFirstNum = '';
-            display.textContent = displayNum;
-        }
+        getResult();
     }
 }
 function clear() {
@@ -50,14 +60,19 @@ function clear() {
     display.textContent = '';
 }
 
+function addDisplayNum(num) {
+    display.textContent += num;
+    displayNum = display.textContent;
+}
+
 function removeDisplayNum() {
     display.textContent = display.textContent.toString().slice(0, -1);
 }
 
-function appendFirstNum() {
+function appendFirstNum(operator) {
     if (displayNum !== '') {
         currentFirstNum = displayNum;
-        currentOperator = displayInput;
+        currentOperator = operator;
 
         display.textContent = '';
         displayNum = '';
@@ -72,11 +87,22 @@ function appendLastNum() {
     }
 }
 
+function getResult() {
+    if (currentFirstNum === '' || currentLastNum === '') {
+        showError('Error!');
+    } else if (currentLastNum == 0 && currentOperator == '/') {
+        showError("Can't divide by 0!");
+    } else {
+        displayNum = operate(currentFirstNum, currentLastNum, currentOperator);
+        currentLastNum = '';
+        currentFirstNum = '';
+        display.textContent = displayNum;
+    }
+}
+
 function showError(message) {
-    display.classList.toggle('error');
     display.textContent = message;
     window.addEventListener('keydown', () => {
-        display.classList.toggle('error');
         clear();
     }, { once: true });
 }
