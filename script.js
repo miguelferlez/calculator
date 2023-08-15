@@ -28,6 +28,7 @@ function init() {
     }
     clearButton.addEventListener('click', clear);
     signButton.addEventListener('click', changeDisplayNumSign);
+    percentButton.addEventListener('click', percentDisplayNum);
     equalsButton.addEventListener('click', () => {
         appendLastNum();
         getResult();
@@ -35,6 +36,7 @@ function init() {
 }
 
 function handleKeyInput(e) {
+    display.innerHTML = display.innerHTML.substring(0,18);
     displayInput = e.key;
     if (!isNaN(displayInput)) {
         display.textContent += displayInput;
@@ -68,7 +70,13 @@ function changeDisplayNumSign() {
     displayNum = display.textContent;
 }
 
+function percentDisplayNum() {
+    display.textContent /= 100;
+    displayNum = display.textContent;
+}
+
 function addDisplayNum(num) {
+    display.innerHTML = display.innerHTML.substring(0,18);
     display.textContent += num;
     displayNum = display.textContent;
 }
@@ -126,7 +134,7 @@ function operate(firstNum, lastNum, operator) {
         case '*':
             return multiply(firstNum, lastNum);
         case '/':
-            return divide(firstNum, lastNum).toFixed(2);
+            return divide(firstNum, lastNum);
         default:
             break;
     }
