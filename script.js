@@ -29,6 +29,7 @@ function init() {
     clearButton.addEventListener('click', clear);
     signButton.addEventListener('click', changeDisplayNumSign);
     percentButton.addEventListener('click', percentDisplayNum);
+    decimalButton.addEventListener('click', addDecimal);
     equalsButton.addEventListener('click', () => {
         appendLastNum();
         getResult();
@@ -50,6 +51,10 @@ function handleKeyInput(e) {
     }
     if (displayInput === '+' || displayInput === '-' || displayInput === '*' || displayInput === '/') {
         appendFirstNum(displayInput);
+    }
+    if (displayInput === '.') {
+        displayNum = display.textContent;
+        addDecimal();
     }
     if (displayInput === '=') {
         appendLastNum();
@@ -73,6 +78,12 @@ function changeDisplayNumSign() {
 function percentDisplayNum() {
     display.textContent /= 100;
     displayNum = display.textContent;
+}
+
+function addDecimal() {
+    if(!displayNum.includes('.')) {
+        display.textContent += '.';
+    }
 }
 
 function addDisplayNum(num) {
