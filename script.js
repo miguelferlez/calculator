@@ -36,7 +36,7 @@ function init() {
 }
 
 function handleKeyInput(e) {
-    display.innerHTML = display.innerHTML.substring(0,18);
+    display.innerHTML = display.innerHTML.substring(0, 18);
     displayInput = e.key;
     if (!isNaN(displayInput)) {
         display.textContent += displayInput;
@@ -76,7 +76,7 @@ function percentDisplayNum() {
 }
 
 function addDisplayNum(num) {
-    display.innerHTML = display.innerHTML.substring(0,18);
+    display.innerHTML = display.innerHTML.substring(0, 18);
     display.textContent += num;
     displayNum = display.textContent;
 }
@@ -104,8 +104,10 @@ function appendLastNum() {
 }
 
 function getResult() {
-    if (currentFirstNum === '' || currentLastNum === '') {
-        showError('Error!');
+    if(currentOperator === '') {
+        showError("Missing operator!");
+    } else if (currentFirstNum === '' || currentLastNum === '') {
+        showError("Missing operands!");
     } else if (currentLastNum == 0 && currentOperator == '/') {
         showError("Can't divide by 0!");
     } else {

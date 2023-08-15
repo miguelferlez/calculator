@@ -75,15 +75,21 @@ button:active {
     background-color: rgb(60, 64, 24);
 }
 
-.sign, .percent, .operator {
+.sign,
+.percent,
+.operator {
     background-color: rgb(91, 66, 47);
 }
 
-.sign:hover, .percent:hover, .operator:hover {
+.sign:hover,
+.percent:hover,
+.operator:hover {
     background-color: rgb(86, 61, 42);
 }
 
-.sign:active, .percent:active, .operator:active {
+.sign:active,
+.percent:active,
+.operator:active {
     background-color: rgb(81, 56, 37);
 }
 
