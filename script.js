@@ -22,9 +22,12 @@ function init() {
         });
     }
     for (let i = 0; i < operatorButtons.length; i++) {
-        operatorButtons[i].addEventListener('click', appendFirstNum(operatorButtons[i].textContent));
+        operatorButtons[i].addEventListener('click', () => {
+            appendFirstNum(operatorButtons[i].textContent)
+        });
     }
     clearButton.addEventListener('click', clear);
+    signButton.addEventListener('click', changeDisplayNumSign);
     equalsButton.addEventListener('click', () => {
         appendLastNum();
         getResult();
@@ -58,6 +61,11 @@ function clear() {
     currentLastNum = '';
     currentOperator = '';
     display.textContent = '';
+}
+
+function changeDisplayNumSign() {
+    display.textContent *= -1;
+    displayNum = display.textContent;
 }
 
 function addDisplayNum(num) {
